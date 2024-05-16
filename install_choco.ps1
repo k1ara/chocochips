@@ -137,7 +137,7 @@ $paquetes = @(
     'RustDesk.RustDesk'
 )
 foreach ($paquete in $paquetes) {
-    $comando = Start-Process -FilePath 'winget' -ArgumentList "install $paquete" -PassThru -Wait -NoNewWindow
+    $comando = Start-Process -FilePath 'winget' -ArgumentList "install $paquete --accept-package-agreements --accept-source-agreements" -PassThru -Wait -NoNewWindow
     if ($comando.ExitCode -eq 0) {
         Write-Output "Paquete atendido: $paquete"
     } else {
