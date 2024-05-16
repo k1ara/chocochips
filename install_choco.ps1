@@ -136,3 +136,11 @@ $paquetes = @(
     'Fortinet.FortiClientVPN',
     'RustDesk.RustDesk'
 )
+foreach ($paquete in $paquetes) {
+    $comando = Start-Process -FilePath 'winget' -ArgumentList "install $paquete" -PassThru -Wait -NoNewWindow
+    if ($comando.ExitCode -eq 0) {
+        Write-Output "Paquete atendido: $paquete"
+    } else {
+        Write-Error "Error al instalar el paquete: $paquete"
+    }
+}
