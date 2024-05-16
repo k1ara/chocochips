@@ -68,22 +68,7 @@ $Aplicaciones = @(
     "microsoft-teams-new-bootstrapper",
     "notepadplusplus.install",
     "adobereader",
-    #"rustdesk.install",
     "office365business",
-    # "conemu",
-    # "dropbox",
-    # "f.lux",
-    # "foxitreader",
-    # "inkscape",
-    # "lightscreen",
-    # "mp3tag",
-    # "mpv",
-    # "rawtherapee",
-    # "syncplay",
-    # "telegram",
-    # "upscayl",
-    # "vlc",
-    # "vscode",
     # ------------------------------------------------------
     # NAVEGADORES
     # ------------------------------------------------------
@@ -95,39 +80,18 @@ $Aplicaciones = @(
     # ------------------------------------------------------
     "powershell-core",
     "winget.powershell",
-    # "advanced-ip-scanner",
-    # "autoruns",
-    # "dupeguru",
-    # "fastcopy",
-    # "filezilla",
-    # "HashCheck",
-    # "path-copy-copy",
-    # "lockhunter",
-    # "mremoteng",
-    # "onecommander",
-    # "putty",
-    # "spek",
     # ------------------------------------------------------
     # COMANDOS
     # ------------------------------------------------------
-    # "adb",
-    # "bind-toolsonly",
-    # "cmder",
-    # "exiftool",
-    # "git",
     # "nmap",
     # "whois",
     # "yt-dlp",
     # ------------------------------------------------------
     # HARDWARE MONITORING
     # ------------------------------------------------------
-    # "bulk-crap-uninstaller",
     # "cpu-z",
     "crystaldiskinfo",
-    # "dupeguru",
-    # "librehardwaremonitor",
     "treesizefree"
-    # "usbdeview"
 )
 # ==========================================================
 # INSTALANDO PROGRAMAS
@@ -163,32 +127,12 @@ foreach ($Package in $Aplicaciones) {
     }
     Install-ChocoApps -ChocoApps $Package -ChocoParams $Params
 }
+
+
 # # ==========================================================
 # # INSTALANDO PROGRAMAS FALTANTES CON WINGET
 # # ==========================================================
 $paquetes = @(
     'Fortinet.FortiClientVPN',
     'RustDesk.RustDesk'
-     )
-# # ==========================================================
-# # AGREGANDO TAREA PROGRAMADA
-# # ==========================================================
-# if (-not (Get-ScheduledJob -Name $ChocoTaskName -ErrorAction SilentlyContinue)) {
-
-#     $ChocoUpgrade = @{
-#         Name               = $ChocoTaskName
-#         ScriptBlock        = { choco upgrade all -y }
-#         Trigger            = New-JobTrigger -Daily -at "8:00PM"
-#         ScheduledJobOption = New-ScheduledJobOption -RunElevated -MultipleInstancePolicy StopExisting -RequireNetwork
-#     }
-#     Register-ScheduledJob @ChocoUpgrade
-#     Write-Host "La tarea programada '$ChocoTaskName' fue registrada." -ForegroundColor Black -BackgroundColor Yellow -NoNewline; Write-Host ([char]0xA0)
-# }
-# else {
-#     Write-Host "La tarea programada '$ChocoTaskName' ya existe. Se omite el registro." -ForegroundColor Black -BackgroundColor Yellow -NoNewline; Write-Host ([char]0xA0)
-# }
-# ==========================================================
-# EXTRA (LUEGO LO ELIMINO)
-# ==========================================================
-# $appsToInstall = $Aplicaciones -split "," | ForEach-Object { "$($_.Trim())" }
-# Write-Host "$appsToInstall"
+)
