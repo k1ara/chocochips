@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Instala aplicaciones útiles para mi. Obvio.
+    Instala aplicaciones necesarias despues de formatear
 .NOTES
     Primero ejecutar Powershell como administrador
     Luego, habilitar la ejecución de script
@@ -61,65 +61,73 @@ $Aplicaciones = @(
     # DE USUARIO
     # ------------------------------------------------------
     "7zip",
-    "aimp",
     "anydesk",
-    "audacity",
     "chocolateygui",
-    "conemu",
-    "dropbox",
-    "f.lux",
-    "foxitreader",
-    "inkscape",
-    "lightscreen",
-    "mp3tag",
-    "mpv",
-    "rawtherapee",
-    "syncplay",
-    "telegram",
-    "upscayl",
-    "vlc",
-    "vscode",
+    "open-shell",
+    "forticlientvpn",
+    "microsoft-teams-new-bootstrapper",
+    "notepadplusplus.install",
+    "adobereader",
+    "rustdesk.install",
+    "office365business",
+    # "conemu",
+    # "dropbox",
+    # "f.lux",
+    # "foxitreader",
+    # "inkscape",
+    # "lightscreen",
+    # "mp3tag",
+    # "mpv",
+    # "rawtherapee",
+    # "syncplay",
+    # "telegram",
+    # "upscayl",
+    # "vlc",
+    # "vscode",
     # ------------------------------------------------------
     # NAVEGADORES
     # ------------------------------------------------------
-    "brave",
+    # "brave",
     "firefox",
+    "googlechrome",
     # ------------------------------------------------------
     # SYSINTERNALS
     # ------------------------------------------------------
-    "advanced-ip-scanner",
-    "autoruns",
-    "dupeguru",
-    "fastcopy",
-    "filezilla",
-    "HashCheck",
-    "path-copy-copy",
-    "lockhunter",
-    "mremoteng",
-    "onecommander",
-    "putty",
-    "spek",
+    "powershell-core",
+    "winget.powershell",
+    # "advanced-ip-scanner",
+    # "autoruns",
+    # "dupeguru",
+    # "fastcopy",
+    # "filezilla",
+    # "HashCheck",
+    # "path-copy-copy",
+    # "lockhunter",
+    # "mremoteng",
+    # "onecommander",
+    # "putty",
+    # "spek",
     # ------------------------------------------------------
     # COMANDOS
     # ------------------------------------------------------
-    "adb",
-    "bind-toolsonly",
-    "cmder",
-    "exiftool",
-    "git",
-    "nmap",
-    "whois",
-    "yt-dlp",
+    # "adb",
+    # "bind-toolsonly",
+    # "cmder",
+    # "exiftool",
+    # "git",
+    # "nmap",
+    # "whois",
+    # "yt-dlp",
     # ------------------------------------------------------
     # HARDWARE MONITORING
     # ------------------------------------------------------
-    "bulk-crap-uninstaller",
-    "cpu-z",
+    # "bulk-crap-uninstaller",
+    # "cpu-z",
     "crystaldiskinfo",
-    "dupeguru",
-    "librehardwaremonitor",
+    # "dupeguru",
+    # "librehardwaremonitor",
     "treesizefree",
-    "usbdeview"
+    # "usbdeview"
 )
 # ==========================================================
 # INSTALANDO PROGRAMAS
@@ -155,23 +163,23 @@ foreach ($Package in $Aplicaciones) {
     }
     Install-ChocoApps -ChocoApps $Package -ChocoParams $Params
 }
-# ==========================================================
-# AGREGANDO TAREA PROGRAMADA
-# ==========================================================
-if (-not (Get-ScheduledJob -Name $ChocoTaskName -ErrorAction SilentlyContinue)) {
+# # ==========================================================
+# # AGREGANDO TAREA PROGRAMADA
+# # ==========================================================
+# if (-not (Get-ScheduledJob -Name $ChocoTaskName -ErrorAction SilentlyContinue)) {
 
-    $ChocoUpgrade = @{
-        Name               = $ChocoTaskName
-        ScriptBlock        = { choco upgrade all -y }
-        Trigger            = New-JobTrigger -Daily -at "8:00PM"
-        ScheduledJobOption = New-ScheduledJobOption -RunElevated -MultipleInstancePolicy StopExisting -RequireNetwork
-    }
-    Register-ScheduledJob @ChocoUpgrade
-    Write-Host "La tarea programada '$ChocoTaskName' fue registrada." -ForegroundColor Black -BackgroundColor Yellow -NoNewline; Write-Host ([char]0xA0)
-}
-else {
-    Write-Host "La tarea programada '$ChocoTaskName' ya existe. Se omite el registro." -ForegroundColor Black -BackgroundColor Yellow -NoNewline; Write-Host ([char]0xA0)
-}
+#     $ChocoUpgrade = @{
+#         Name               = $ChocoTaskName
+#         ScriptBlock        = { choco upgrade all -y }
+#         Trigger            = New-JobTrigger -Daily -at "8:00PM"
+#         ScheduledJobOption = New-ScheduledJobOption -RunElevated -MultipleInstancePolicy StopExisting -RequireNetwork
+#     }
+#     Register-ScheduledJob @ChocoUpgrade
+#     Write-Host "La tarea programada '$ChocoTaskName' fue registrada." -ForegroundColor Black -BackgroundColor Yellow -NoNewline; Write-Host ([char]0xA0)
+# }
+# else {
+#     Write-Host "La tarea programada '$ChocoTaskName' ya existe. Se omite el registro." -ForegroundColor Black -BackgroundColor Yellow -NoNewline; Write-Host ([char]0xA0)
+# }
 # ==========================================================
 # EXTRA (LUEGO LO ELIMINO)
 # ==========================================================
