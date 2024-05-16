@@ -126,7 +126,7 @@ $Aplicaciones = @(
     "crystaldiskinfo",
     # "dupeguru",
     # "librehardwaremonitor",
-    "treesizefree",
+    "treesizefree"
     # "usbdeview"
 )
 # ==========================================================
