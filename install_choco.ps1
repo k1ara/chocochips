@@ -61,14 +61,14 @@ $Aplicaciones = @(
     # DE USUARIO
     # ------------------------------------------------------
     "7zip",
-    "anydesk",
+    "anydesk.install",
     "chocolateygui",
     "open-shell",
     "forticlientvpn",
     "microsoft-teams-new-bootstrapper",
     "notepadplusplus.install",
     "adobereader",
-    "rustdesk.install",
+    #"rustdesk.install",
     "office365business",
     # "conemu",
     # "dropbox",
@@ -163,6 +163,13 @@ foreach ($Package in $Aplicaciones) {
     }
     Install-ChocoApps -ChocoApps $Package -ChocoParams $Params
 }
+# # ==========================================================
+# # INSTALANDO PROGRAMAS FALTANTES CON WINGET
+# # ==========================================================
+$paquetes = @(
+    'Fortinet.FortiClientVPN',
+    'RustDesk.RustDesk'
+     )
 # # ==========================================================
 # # AGREGANDO TAREA PROGRAMADA
 # # ==========================================================
