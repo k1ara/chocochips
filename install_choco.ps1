@@ -64,8 +64,8 @@ $Aplicaciones = @(
     "anydesk.install",
     "chocolateygui",
     "open-shell",
-    "forticlientvpn",
-    "microsoft-teams-new-bootstrapper",
+    #"forticlientvpn",
+    "microsoft-teams",
     "notepadplusplus.install",
     "adobereader",
     "office365business",
@@ -128,7 +128,6 @@ foreach ($Package in $Aplicaciones) {
     Install-ChocoApps -ChocoApps $Package -ChocoParams $Params
 }
 
-
 # # ==========================================================
 # # INSTALANDO PROGRAMAS FALTANTES CON WINGET
 # # ==========================================================
@@ -144,3 +143,8 @@ foreach ($paquete in $paquetes) {
         Write-Error "Error al instalar el paquete: $paquete"
     }
 }
+
+# # ==========================================================
+# # QUITANDO PAQUETES INUTILES PREINSTALADOS EN EL SISTEMA
+# # ==========================================================
+Get-AppxPackage *Teams* | Remove-AppxPackage
