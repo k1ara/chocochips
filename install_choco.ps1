@@ -56,6 +56,14 @@ $ChocoDate = {
     Write-Host " Hora:  $(Get-Date -f "HH:mm:ss") " -ForegroundColor DarkYellow -NoNewline; Write-Host ([char]0xA0)
     Write-Host "====================" -ForegroundColor Yellow -NoNewline; Write-Host ([char]0xA0)
 }
+
+
+# # ==========================================================
+# # QUITANDO PAQUETES INUTILES PREINSTALADOS EN EL SISTEMA
+# # ==========================================================
+Get-AppxPackage *Teams* | Remove-AppxPackage
+
+
 .$ChocoDate
 # ==========================================================
 # LISTA DE APLICACIONES
@@ -152,8 +160,3 @@ foreach ($paquete in $paquetes) {
         Write-Error "Error al instalar el paquete: $paquete"
     }
 }
-
-# # ==========================================================
-# # QUITANDO PAQUETES INUTILES PREINSTALADOS EN EL SISTEMA
-# # ==========================================================
-Get-AppxPackage *Teams* | Remove-AppxPackage
