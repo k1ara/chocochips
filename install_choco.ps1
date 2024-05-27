@@ -162,14 +162,11 @@ Invoke-Expression "winget upgrade --id Microsoft.Winget.Source --accept-source-a
 # Install RustDesk
 Invoke-Expression "winget install rustdesk.rustdesk"
 
-# Install the other program (example)
-Invoke-Expression "winget install [nombre_del_programa]"
-
 # # ==========================================================
 # # INSTALANDO PROGRAMAS CON WINGET
 # # ==========================================================
 $paquetes = @(
-    'Fortinet.FortiClientVPN',
+    #'Fortinet.FortiClientVPN',
     'RustDesk.RustDesk'
 )
 foreach ($paquete in $paquetes) {
