@@ -80,7 +80,7 @@ $Aplicaciones = @(
     "microsoft-teams-new-bootstrapper",
     "notepadplusplus.install",
     "adobereader",
-    "office365business",
+    #"office365business",
     # ------------------------------------------------------
     # NAVEGADORES
     # ------------------------------------------------------
@@ -147,7 +147,8 @@ foreach ($Package in $Aplicaciones) {
 $paquetes = @(
     'Fortinet.FortiClientVPN',
     'RustDesk.RustDesk',
-    'teamviewer.teamviewer.host'
+    'teamviewer.teamviewer.host',
+    'microsoft.office'
 )
 foreach ($paquete in $paquetes) {
     $comando = Start-Process -FilePath 'winget' -ArgumentList "install $paquete --accept-package-agreements --accept-source-agreements" -PassThru -Wait -NoNewWindow
