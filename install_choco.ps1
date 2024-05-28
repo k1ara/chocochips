@@ -92,6 +92,7 @@ $Aplicaciones = @(
     # ------------------------------------------------------
     "powershell-core",
     "winget.powershell",
+    "winget",
     # ------------------------------------------------------
     # COMANDOS
     # ------------------------------------------------------
@@ -141,33 +142,12 @@ foreach ($Package in $Aplicaciones) {
 }
 
 # # ==========================================================
-# # ACTUALIZANDO WINGET
-# # ==========================================================
-
-# Define the URL for the App Installer package (ensure you have the correct URL for the latest version)
-$appInstallerUrl = "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
-
-# Define the local path to save the App Installer package
-$appInstallerPath = "$env:TEMP\AppInstaller.appx"
-
-# Download the App Installer package
-Invoke-WebRequest -Uri $appInstallerUrl -OutFile $appInstallerPath
-
-# Install the App Installer package
-Add-AppxPackage -Path $appInstallerPath
-
-# Confirm winget upgrade
-Invoke-Expression "winget upgrade --id Microsoft.Winget.Source --accept-source-agreements --force"
-
-# Install RustDesk
-Invoke-Expression "winget install rustdesk.rustdesk"
-
-# # ==========================================================
 # # INSTALANDO PROGRAMAS CON WINGET
 # # ==========================================================
 $paquetes = @(
-    #'Fortinet.FortiClientVPN',
-    'RustDesk.RustDesk'
+    'Fortinet.FortiClientVPN',
+    'RustDesk.RustDesk',
+    'teamviewer.teamviewer.host'
 )
 foreach ($paquete in $paquetes) {
     $comando = Start-Process -FilePath 'winget' -ArgumentList "install $paquete --accept-package-agreements --accept-source-agreements" -PassThru -Wait -NoNewWindow
