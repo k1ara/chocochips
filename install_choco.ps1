@@ -27,35 +27,35 @@ if (-Not (Get-Command "choco" -errorAction SilentlyContinue)) {
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
     Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 }
-# ==========================================================
-# AJUSTES EN CHOCOLATELY
-# ==========================================================
-$ChocoDirCache = "$env:ALLUSERSPROFILE\ChocolateyAppsCache"
-$ChocoDirLog   = "$ChocoDirCache/$env:COMPUTERNAME"
-$ChocoLibPath  = "$env:ChocolateyInstall\lib"
-$ChocoLog      = "$ChocoDirLog\chocolatey_log_$(Get-Date -UFormat "%Y-%m-%d").log"
-$ChocoTaskName = "Chocolatey Daily Upgrade"
+# # ==========================================================
+# # AJUSTES EN CHOCOLATELY
+# # ==========================================================
+# $ChocoDirCache = "$env:ALLUSERSPROFILE\ChocolateyAppsCache"
+# $ChocoDirLog   = "$ChocoDirCache/$env:COMPUTERNAME"
+# $ChocoLibPath  = "$env:ChocolateyInstall\lib"
+# $ChocoLog      = "$ChocoDirLog\chocolatey_log_$(Get-Date -UFormat "%Y-%m-%d").log"
+# $ChocoTaskName = "Chocolatey Daily Upgrade"
 
-Write-Host "* Ruta para la descarga de Aplicaciones"
-choco config set cacheLocation $ChocoDirCache
-Write-Host "* Limite de ejecucion de comandos a 30 minutos"
-choco config set commandExecutionTimeoutSeconds 1800
-Write-Host "* Habilitando confirmacion global para instalacion de Aplicaciones"
-choco feature enable -n=allowGlobalConfirmation
+# Write-Host "* Ruta para la descarga de Aplicaciones"
+# choco config set cacheLocation $ChocoDirCache
+# Write-Host "* Limite de ejecucion de comandos a 30 minutos"
+# choco config set commandExecutionTimeoutSeconds 1800
+# Write-Host "* Habilitando confirmacion global para instalacion de Aplicaciones"
+# choco feature enable -n=allowGlobalConfirmation
 
-#choco feature enable -n=useEnhancedLASTEXITCODEs
-# ==========================================================
-# DECORACIONES DE PANTALLA
-# ==========================================================
-$host.UI.RawUI.WindowTitle = "Instalando aplicaciones con Chocolatey"
-Write-Host "`n Instalando aplicaciones " -ForegroundColor Black -BackgroundColor Yellow -NoNewline; Write-Host ([char]0xA0)
+# #choco feature enable -n=useEnhancedLASTEXITCODEs
+# # ==========================================================
+# # DECORACIONES DE PANTALLA
+# # ==========================================================
+# $host.UI.RawUI.WindowTitle = "Instalando aplicaciones con Chocolatey"
+# Write-Host "`n Instalando aplicaciones " -ForegroundColor Black -BackgroundColor Yellow -NoNewline; Write-Host ([char]0xA0)
 
-$ChocoDate = {
-    Write-Host "====================" -ForegroundColor Yellow -NoNewline; Write-Host ([char]0xA0)
-    Write-Host " Fecha: $(Get-Date -UFormat "%d %b %Y") " -ForegroundColor DarkYellow -NoNewline; Write-Host ([char]0xA0)
-    Write-Host " Hora:  $(Get-Date -f "HH:mm:ss") " -ForegroundColor DarkYellow -NoNewline; Write-Host ([char]0xA0)
-    Write-Host "====================" -ForegroundColor Yellow -NoNewline; Write-Host ([char]0xA0)
-}
+# $ChocoDate = {
+#     Write-Host "====================" -ForegroundColor Yellow -NoNewline; Write-Host ([char]0xA0)
+#     Write-Host " Fecha: $(Get-Date -UFormat "%d %b %Y") " -ForegroundColor DarkYellow -NoNewline; Write-Host ([char]0xA0)
+#     Write-Host " Hora:  $(Get-Date -f "HH:mm:ss") " -ForegroundColor DarkYellow -NoNewline; Write-Host ([char]0xA0)
+#     Write-Host "====================" -ForegroundColor Yellow -NoNewline; Write-Host ([char]0xA0)
+# }
 
 
 # # ==========================================================
