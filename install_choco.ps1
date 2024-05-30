@@ -22,11 +22,12 @@ if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
     Start-Process powershell -Verb runAs -ArgumentList $arguments
     Break
 }
-if (-Not (Get-Command "choco" -errorAction SilentlyContinue)) {
-    Write-Host "`n Instalando Chocolatey" -ForegroundColor Black -BackgroundColor Yellow -NoNewline; Write-Host ([char]0xA0)
-    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
-    Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-}
+
+# # ==========================================================
+# # INSTALANDO CHOCOLATELY
+# # ==========================================================
+Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
 # # ==========================================================
 # # AJUSTES EN CHOCOLATELY
 # # ==========================================================
@@ -64,7 +65,7 @@ if (-Not (Get-Command "choco" -errorAction SilentlyContinue)) {
 Get-AppxPackage *Teams* | Remove-AppxPackage
 
 
-.$ChocoDate
+#$ChocoDate
 # ==========================================================
 # LISTA DE APLICACIONES
 # ==========================================================
@@ -110,28 +111,28 @@ $Aplicaciones = @(
 # INSTALANDO PROGRAMAS
 # ==========================================================
 # Fragmento obtenido de: https://gist.github.com/RafaelM1994/791cb40d8df4994dd1371bd40e346424
-function Install-ChocoApps {
-    param (
-        [String]$ChocoApps,
-        [String]$ChocoParams
-    )
-    if (!((test-path "$ChocoLibPath\$ChocoApps"))) {
-        $StartTime = Get-Date
-        Write-Host "[INFO] Instalando $ChocoApps" -ForegroundColor Black -BackgroundColor Yellow -NoNewline; Write-Host ([char]0xA0)
-        choco install $ChocoApps --params='$ChocoParams' --nocolor --limitoutput --log-file=$ChocoLog | Out-Null
+# function Install-ChocoApps {
+#     param (
+#         [String]$ChocoApps,
+#         [String]$ChocoParams
+#     )
+#     if (!((test-path "$ChocoLibPath\$ChocoApps"))) {
+#         $StartTime = Get-Date
+#         Write-Host "[INFO] Instalando $ChocoApps" -ForegroundColor Black -BackgroundColor Yellow -NoNewline; Write-Host ([char]0xA0)
+#         choco install $ChocoApps --params='$ChocoParams' --nocolor --limitoutput --log-file=$ChocoLog | Out-Null
 
-        if ($LASTEXITCODE -ne 0) {
-            Write-Host "[FALLO] No se pudo instalar: $ChocoApps" -ForegroundColor DarkRed -NoNewline; Write-Host ([char]0xA0)
-        }
-        elseif ($LASTEXITCODE -eq 0) {
-            Write-Host "[ OK ] Completada la instalacion" -ForegroundColor DarkGray -NoNewline; Write-Host ([char]0xA0)
-            Write-Host "Tiempo de ejecucion: $((Get-Date).Subtract($StartTime).Seconds) segundos" -ForegroundColor DarkGray -NoNewline; Write-Host ([char]0xA0)
-        }
-    }
-    else {
-        Write-Host "[ OK ] $ChocoApps $ChocoParams" -ForegroundColor Green -NoNewline; Write-Host ([char]0xA0)
-    }
-}
+#         if ($LASTEXITCODE -ne 0) {
+#             Write-Host "[FALLO] No se pudo instalar: $ChocoApps" -ForegroundColor DarkRed -NoNewline; Write-Host ([char]0xA0)
+#         }
+#         elseif ($LASTEXITCODE -eq 0) {
+#             Write-Host "[ OK ] Completada la instalacion" -ForegroundColor DarkGray -NoNewline; Write-Host ([char]0xA0)
+#             Write-Host "Tiempo de ejecucion: $((Get-Date).Subtract($StartTime).Seconds) segundos" -ForegroundColor DarkGray -NoNewline; Write-Host ([char]0xA0)
+#         }
+#     }
+#     else {
+#         Write-Host "[ OK ] $ChocoApps $ChocoParams" -ForegroundColor Green -NoNewline; Write-Host ([char]0xA0)
+#     }
+# }
 foreach ($Package in $Aplicaciones) {
     switch ($Package) {
         "firefox" { $Params = "/l:es-MX" }
