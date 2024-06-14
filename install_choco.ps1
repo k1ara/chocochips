@@ -100,3 +100,5 @@ foreach ($paquete in $paquetes) {
         Write-Error "Error al instalar el paquete: $paquete"
     }
 }
+
+Set-ExecutionPolicy Restricted
