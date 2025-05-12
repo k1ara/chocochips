@@ -42,7 +42,7 @@ $Aplicaciones = @(
     # DE USUARIO
     # ------------------------------------------------------
     "7zip",
-    "anydesk.install",
+    "anydesk",
     "chocolateygui",
     "open-shell",
     #"forticlientvpn",
