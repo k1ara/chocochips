@@ -48,6 +48,7 @@ $Aplicaciones = @(
     #"forticlientvpn",
     "microsoft-teams-new-bootstrapper",
     "notepadplusplus.install",
+    "ocsinventoryng.windowsagent",
     "adobereader",
     #"office365business",
     # ------------------------------------------------------
