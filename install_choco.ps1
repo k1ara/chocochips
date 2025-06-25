@@ -42,7 +42,7 @@ $Aplicaciones = @(
     # DE USUARIO
     # ------------------------------------------------------
     "7zip",
-    "anydesk",
+    #"anydesk",
     "chocolateygui",
     "open-shell",
     #"forticlientvpn",
@@ -91,7 +91,8 @@ $paquetes = @(
     'Fortinet.FortiClientVPN',
     'RustDesk.RustDesk',
     'teamviewer.teamviewer.host',
-    'microsoft.office'
+    'microsoft.office',
+    'anydesk'
 )
 foreach ($paquete in $paquetes) {
     $comando = Start-Process -FilePath 'winget' -ArgumentList "install $paquete --accept-package-agreements --accept-source-agreements" -PassThru -Wait -NoNewWindow
