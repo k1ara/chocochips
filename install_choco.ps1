@@ -92,7 +92,8 @@ $paquetes = @(
     'RustDesk.RustDesk',
     'teamviewer.teamviewer.host',
     'microsoft.office',
-    'anydesk'
+    'anydesk',
+    'glpi-project.glpi-agent --silent --override="SERVER=http://dockertu:8080 RUNNOW=1"'
 )
 foreach ($paquete in $paquetes) {
     $comando = Start-Process -FilePath 'winget' -ArgumentList "install $paquete --accept-package-agreements --accept-source-agreements" -PassThru -Wait -NoNewWindow
