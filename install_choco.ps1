@@ -45,10 +45,10 @@ $Aplicaciones = @(
     #"anydesk",
     "chocolateygui",
     "open-shell",
-    #"forticlientvpn",
+    "forticlientvpn",
     "microsoft-teams-new-bootstrapper",
     "notepadplusplus.install",
-    "ocsinventoryng.windowsagent",
+    #"ocsinventoryng.windowsagent",
     "adobereader",
     #"office365business",
     # ------------------------------------------------------
@@ -56,7 +56,7 @@ $Aplicaciones = @(
     # ------------------------------------------------------
     # "brave",
     "firefox",
-    "googlechrome",
+    #"googlechrome",
     # ------------------------------------------------------
     # SYSINTERNALS
     # ------------------------------------------------------
@@ -74,7 +74,11 @@ $Aplicaciones = @(
     # ------------------------------------------------------
     # "cpu-z",
     "crystaldiskinfo",
-    "treesizefree"
+    "treesizefree",
+    # ------------------------------------------------------
+    # ASISTENCIA REMOTA
+    # ------------------------------------------------------
+    "rustdesk"
 )
 # ==========================================================
 # INSTALANDO PROGRAMAS
@@ -88,11 +92,12 @@ foreach ($Package in $Aplicaciones) {
 # # INSTALANDO PROGRAMAS CON WINGET
 # # ==========================================================
 $paquetes = @(
-    'Fortinet.FortiClientVPN',
-    'RustDesk.RustDesk',
+    #'Fortinet.FortiClientVPN',
+    #'RustDesk.RustDesk',
     'teamviewer.teamviewer.host',
     'microsoft.office',
     'anydesk',
+    'OCSInventoryNG.WindowsAgent /S /NOSPLASH /NOW /SERVER=http://leliel.cfe.local/ocsinventory /FORCE',
     'glpi-project.glpi-agent --silent --override="SERVER=http://dockertu:8080 RUNNOW=1"'
 )
 foreach ($paquete in $paquetes) {
