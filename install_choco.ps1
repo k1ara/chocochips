@@ -97,7 +97,7 @@ $paquetes = @(
     'teamviewer.teamviewer.host',
     'microsoft.office',
     'anydesk',
-    'OCSInventoryNG.WindowsAgent /S /NOSPLASH /NOW /SERVER=http://leliel.cfe.local/ocsinventory /FORCE',
+    'OCSInventoryNG.WindowsAgent --silent --override="/S /NOSPLASH /NOW /SERVER=http://leliel.cfe.local/ocsinventory /FORCE"',
     'glpi-project.glpi-agent --silent --override="SERVER=http://dockertu:8080 RUNNOW=1"'
 )
 foreach ($paquete in $paquetes) {
